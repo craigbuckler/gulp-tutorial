@@ -1,0 +1,25 @@
+// reset browser settings
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+// HTML5 block elements
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+// textarea scrollbars
+textarea {
+  overflow: auto;
+}

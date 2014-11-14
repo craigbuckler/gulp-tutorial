@@ -1,0 +1,6 @@
+.DS_Store
+Thumbs.db
+
+build/
+source/scss/images/_datauri.scss
+node_modules/

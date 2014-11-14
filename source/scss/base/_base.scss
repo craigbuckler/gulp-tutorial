@@ -1,0 +1,17 @@
+// base styles
+body {
+  font-family: $base-font-standard;
+  font-size: $base-font-size;
+  font-weight: 400;
+  color: $text-main;
+  background-color: $back-main;
+}
+
+// custom fonts
+.wf-active {
+
+  body {
+    font-family: $base-font-custom;
+  }
+
+}
