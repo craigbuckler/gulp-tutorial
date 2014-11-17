@@ -24,8 +24,9 @@ var
 
 // file locations
 var
-  buildType = 'development',
+  buildType = (process.env.NODE_ENV || 'development').toLowerCase(),
 
+  // do not use absolute ./paths - watch fails to detect new and deleted files
   source = 'source/',
   dest = 'build/',
 
@@ -35,6 +36,7 @@ var
     out: dest,
     context: {
       NODE_ENV: buildType,
+      author: pkg.author,
       version: pkg.version
     }
   },
@@ -58,7 +60,7 @@ var
 
   css = {
     in: source + 'scss/main.scss',
-    watch: source + 'scss/**/*',
+    watch: [source + 'scss/**/*', '!' + imguri.out + imguri.filename],
     out: dest + 'css/',
     sassOpts: {
       imagePath: '../images',
@@ -71,7 +73,7 @@ var
       rem: ['16px'],
       pseudoElements: true,
       mqpacker: true,
-      minifier: false
+      minifier: (buildType != 'development')
     }
   },
 
@@ -93,9 +95,12 @@ var
       scroll: true
     },
     open: false,
-    notify: false
+    notify: true
   }
 ;
+
+// show build type
+console.log('Build type: ' + buildType);
 
 // clean the build folder
 gulp.task('clean', function() {
@@ -106,12 +111,19 @@ gulp.task('clean', function() {
 
 // build HTML files
 gulp.task('html', function() {
-  return gulp.src(html.in)
-    .pipe(preprocess({ context: html.context }))
-    .pipe(size({ title:'HTML in' }))
-    .pipe(htmlclean())
-    .pipe(size({ title:'HTML out' }))
-    .pipe(gulp.dest(html.out));
+  if (buildType == 'development') {
+    return gulp.src(html.in)
+      .pipe(preprocess({ context: html.context }))
+      .pipe(gulp.dest(html.out));
+  }
+  else {
+    return gulp.src(html.in)
+      .pipe(preprocess({ context: html.context }))
+      .pipe(size({ title:'HTML in' }))
+      .pipe(htmlclean())
+      .pipe(size({ title:'HTML out' }))
+      .pipe(gulp.dest(html.out));
+  }
 });
 
 // optimize images
@@ -141,18 +153,14 @@ gulp.task('sass', ['imguri'], function() {
     .pipe(reload({ stream: true }));
 });
 
-// javascript checking
-gulp.task('jshint', function() {
-  return gulp.src(js.in)
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'))
-    .pipe(jshint.reporter('fail'));
-});
-
 // javascript
-gulp.task('js', ['jshint'], function() {
+gulp.task('js', function() {
   if (buildType == 'development') {
     return gulp.src(js.in)
+      .pipe(newer(js.out))
+      .pipe(jshint())
+      .pipe(jshint.reporter('default'))
+      .pipe(jshint.reporter('fail'))
       .pipe(gulp.dest(js.out));
   }
   else {

@@ -1,0 +1,31 @@
+// top welcome section
+#welcome {
+  width: 100%;
+  height: 100vh;
+  background-image: image-url("lightbulbs.jpg");
+  background-position: 50% 50%;
+  background-size: cover;
+
+  h1 {
+    width: 55vw;
+    padding: 35vh 0 5vh 5vw;
+    margin: 0;
+    color: $color-back;
+    @include drop-shadow;
+  }
+
+  a.button {
+    @include drop-shadow;
+
+    &:link, &:visited {
+      color: $color-back;
+      border-color: $color-back;
+    }
+
+    &:hover, &:focus, &:active {
+      color: $color-light;
+      border-color: $color-light;
+    }
+
+  }
+}

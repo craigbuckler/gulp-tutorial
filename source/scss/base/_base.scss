@@ -1,10 +1,30 @@
 // base styles
 body {
+  min-width: $breakpoint-small;
   font-family: $base-font-standard;
   font-size: $base-font-size;
   font-weight: 400;
-  color: $text-main;
-  background-color: $back-main;
+  @include reset;
+  color: $color-text;
+  background-color: $color-back;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 1em 0 0.2em 0;
+}
+
+h1 {
+  font-size: 8vmin;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+h3 {
+  font-size: 1.1rem;
 }
 
 // custom fonts
@@ -12,6 +32,10 @@ body {
 
   body {
     font-family: $base-font-custom;
+  }
+
+  h1, h2, h3, button, a.button {
+    font-family: $head-font-custom;
   }
 
 }

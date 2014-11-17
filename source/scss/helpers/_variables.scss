@@ -1,3 +1,8 @@
+// responsive breakpoints
+$breakpoint-small: 25rem;
+$breakpoint-medium: 50rem;
+$breakpoint-large: 75rem;
+
 // fonts
 $base-font-size: 16px;
 $base-font-standard: arial, helvetica, "free sans", sans-serif;
@@ -5,5 +10,9 @@ $base-font-custom: 'Raleway';
 $head-font-custom: 'Bitter';
 
 // colors
-$text-main: #444;
-$back-main: #fff;
+$color-text: #444;
+$color-back: #fff;
+$color-main: #567;
+$color-light: lighten($color-main, 20%);
+$color-dark: darken($color-main, 20%);
+$black: #000;

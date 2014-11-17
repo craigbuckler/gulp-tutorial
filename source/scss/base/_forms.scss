@@ -1,0 +1,21 @@
+button, a.button {
+  display: block;
+  width: 12em;
+  font-size: 1.2em;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  line-height: 2.75;
+  margin: 0.5em auto;
+
+  &:link, &:visited {
+    color: $color-main;
+    border: 2px solid $color-main;
+  }
+
+  &:hover, &:focus, &:active {
+    color: $color-light;
+    border-color: $color-light;
+  }
+}
