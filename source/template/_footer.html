@@ -1,5 +1,13 @@
 <footer>
 
-  <p>&copy; <!-- @echo author -->, version <!-- @echo version --></p>
+  <form id="tweetform" action="http://twitter.com/home" method="get">
+    <fieldset>
+      <legend>Share on Twitter</legend>
+      <textarea name="status" cols="100" rows="3" required="required" maxlength="140">I'm watching a Gulp.js video tutorial from @craigbuckler</textarea>
+      <button type="submit" class="icon-twitter">Tweet</button>
+    </fieldset>
+  </form>
+
+  <p>&copy; <!-- @echo author -->, version <!-- @echo version -->. <a href="#welcome">Return to top&hellip;</a></p>
 
 </footer>

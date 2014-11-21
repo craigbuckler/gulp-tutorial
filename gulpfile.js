@@ -4,7 +4,6 @@
 var
   gulp = require('gulp'),
   preprocess = require('gulp-preprocess'),
-  frep = require('gulp-frep'),
   newer = require('gulp-newer'),
   concat = require('gulp-concat'),
   htmlclean = require('gulp-htmlclean'),
@@ -50,12 +49,7 @@ var
     in: source + 'images/inline/*',
     out: source + 'scss/images/',
     filename: '_datauri.scss',
-    frep: [
-      {
-        pattern: /\.imacss\.imacss\-/ig,
-        replacement: '%imageuri-'
-      }
-    ]
+    namespace: 'img'
   },
 
   css = {
@@ -75,6 +69,11 @@ var
       mqpacker: true,
       minifier: (buildType != 'development')
     }
+  },
+
+  fonts = {
+    in: source + 'fonts/*.*',
+    out: css.out + 'fonts/'
   },
 
   js = {
@@ -138,9 +137,15 @@ gulp.task('images', function() {
 gulp.task('imguri', function() {
   return gulp.src(imguri.in)
     .pipe(imagemin())
-    .pipe(imacss(imguri.filename))
-    .pipe(frep(imguri.frep))
+    .pipe(imacss(imguri.filename, imguri.namespace))
     .pipe(gulp.dest(imguri.out));
+});
+
+// copy fonts
+gulp.task('fonts', function() {
+  return gulp.src(fonts.in)
+  .pipe(newer(fonts.out))
+  .pipe(gulp.dest(fonts.out));
 });
 
 // compile Sass
@@ -184,13 +189,16 @@ gulp.task('browsersync', function() {
 });
 
 // default task
-gulp.task('default', ['html', 'images', 'sass', 'js', 'browsersync'], function() {
+gulp.task('default', ['html', 'images', 'fonts', 'sass', 'js', 'browsersync'], function() {
 
   // html changes
   gulp.watch(html.watch, ['html', browsersync.reload]);
 
   // image changes
   gulp.watch(images.in, ['images']);
+
+  // font changes
+  gulp.watch(fonts.in, ['fonts']);
 
   // sass and inline image changes
   gulp.watch([css.watch, imguri.in], ['sass']);

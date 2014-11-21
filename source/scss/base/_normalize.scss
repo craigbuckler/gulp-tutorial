@@ -17,6 +17,7 @@ nav,
 section,
 summary {
   display: block;
+  @include reset;
 }
 
 // textarea scrollbars

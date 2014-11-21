@@ -7,3 +7,4 @@ This is a demonstration of Gulp.js and how it can help with typical website task
 * image compression and conversion to data URIs
 * creating CSS from Sass compilation, auto-prefixing and minification
 * JavaScript linting, loading dependencies, concatenation and minification
+* file management and deployment to live servers

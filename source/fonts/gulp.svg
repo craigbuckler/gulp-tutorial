@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2014 by original authors @ fontello.com</metadata>
+<defs>
+<font id="gulp" horiz-adv-x="1000" >
+<font-face font-family="gulp" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="menu" unicode="&#xe800;" d="m857 100v-71q0-15-10-25t-26-11h-785q-15 0-25 11t-11 25v71q0 15 11 25t25 11h785q15 0 26-11t10-25z m0 286v-72q0-14-10-25t-26-10h-785q-15 0-25 10t-11 25v72q0 14 11 25t25 10h785q15 0 26-10t10-25z m0 285v-71q0-15-10-25t-26-11h-785q-15 0-25 11t-11 25v71q0 15 11 26t25 10h785q15 0 26-10t10-26z" horiz-adv-x="857.1" />
+<glyph glyph-name="home" unicode="&#xe801;" d="m0 340q-2 16 21 37l381 351q23 22 57 22t56-22l381-351q23-21 20-37t-30-15h-91v-305q0-32-23-55t-55-23h-517q-32 0-55 23t-23 55v305h-92q-27 0-30 15z" horiz-adv-x="916.5" />
+<glyph glyph-name="doc-inv" unicode="&#xe802;" d="m571 564v264q13-8 21-16l227-228q8-7 16-20h-264z m-71-18q0-22 16-38t38-15h303v-589q0-23-15-38t-38-16h-750q-23 0-38 16t-16 38v892q0 23 16 38t38 16h446v-304z" horiz-adv-x="857.1" />
+<glyph glyph-name="plug" unicode="&#xe803;" d="m979 597q21-20 21-50t-21-51l-223-223 83-84-89-89q-91-91-217-104t-230 56l-202-202h-101v101l202 202q-69 103-56 230t104 217l89 89 84-83 223 223q21 21 51 21t50-21 21-50-21-51l-223-224 131-130 223 223q22 21 51 21t50-21z" horiz-adv-x="1000" />
+<glyph glyph-name="twitter" unicode="&#xe804;" d="m0-37q30-3 60-3 176 0 314 108-82 1-147 50t-89 125q20-4 47-4 35 0 67 9-88 17-145 87t-58 160l0 3q53-30 115-31-52 34-82 90t-31 120q0 68 35 127 94-117 230-186t290-78q-7 33-7 58 0 104 74 178t179 74q109 0 184-80 87 18 160 62-28-91-110-140 73 9 144 40-48-75-125-131l0-33q0-101-29-202t-90-194-145-165-201-115-253-42q-209 0-387 113z" horiz-adv-x="1230" />
+</font>
+</defs>
+</svg>

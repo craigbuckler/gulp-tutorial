@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "description": "A single page website to for Gulp testing",
   "main": "build/index.html",
+  "homepage": "https://github.com/craigbuckler/gulp-tutorial",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/craigbuckler/gulp-tutorial.git"
+  },
+  "bugs": {
+    "url": "https://github.com/craigbuckler/gulp-tutorial/issues"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,13 +19,14 @@
   ],
   "author": "Craig Buckler",
   "license": "MIT",
+  "dependencies": {
+  },
   "devDependencies": {
     "browser-sync": "^1.6.5",
     "del": "^0.1.3",
     "gulp": "^3.8.10",
     "gulp-concat": "^2.4.1",
     "gulp-deporder": "^1.0.0",
-    "gulp-frep": "^0.1.3",
     "gulp-htmlclean": "^2.2.3",
     "gulp-imacss": "^0.3.0",
     "gulp-imagemin": "^1.2.1",

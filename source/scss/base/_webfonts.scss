@@ -1,0 +1,39 @@
+// webfont icons
+@font-face {
+	font-family: 'gulp';
+	src: url('fonts/gulp.eot');
+	src: url('fonts/gulp.eot#iefix') format('embedded-opentype'),
+	url('fonts/gulp.woff') format('woff'),
+	url('fonts/gulp.ttf') format('truetype'),
+	url('fonts/gulp.svg#gulp') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	@font-face {
+		font-family: 'gulp';
+		src: url('fonts/gulp.svg#gulp') format('svg');
+	}
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+	font-family: "gulp";
+	display: inline-block;
+	width: 1.5em;
+	line-height: 1;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-align: center;
+	text-decoration: none;
+	margin-right: 0.2em;
+	speak: none;
+}
+
+.icon-menu:before { content: '\e800'; }
+.icon-home:before { content: '\e801'; }
+.icon-docs:before { content: '\e802'; }
+.icon-plugin:before { content: '\e803'; }
+.icon-twitter:before { content: '\e804'; }

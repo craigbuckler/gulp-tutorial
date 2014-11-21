@@ -1,6 +1,5 @@
 // base styles
-body {
-  min-width: $breakpoint-small;
+body, table, input, textarea, select {
   font-family: $base-font-standard;
   font-size: $base-font-size;
   font-weight: 400;
@@ -16,7 +15,7 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 8vmin;
+  font-size: 10vmin;
 }
 
 h2 {
@@ -27,14 +26,24 @@ h3 {
   font-size: 1.1rem;
 }
 
+a:link, a:visited {
+  text-decoration: none;
+  color: $color-main;
+}
+
+a:hover, a:focus, a:active {
+  text-decoration: underline;
+  color: $color-light;
+}
+
 // custom fonts
 .wf-active {
 
-  body {
+  body, table, input, textarea, select {
     font-family: $base-font-custom;
   }
 
-  h1, h2, h3, button, a.button {
+  h1, h2, h3, legend, button, a.button {
     font-family: $head-font-custom;
   }
 

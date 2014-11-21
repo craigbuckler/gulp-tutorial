@@ -2,16 +2,22 @@
 #welcome {
   width: 100%;
   height: 100vh;
-  background-image: image-url("lightbulbs.jpg");
-  background-position: 50% 50%;
+  background: $color-dark image-url("lightbulbs.jpg") 50% 50% no-repeat;
   background-size: cover;
 
   h1 {
-    width: 55vw;
-    padding: 35vh 0 5vh 5vw;
+    padding: 35vh 5vw 5vh 5vw;
     margin: 0;
     color: $color-back;
     @include drop-shadow;
+  }
+
+  @media (min-width: $breakpoint-small) {
+    h1 { width: 75vw; }
+  }
+
+  @media (min-width: $breakpoint-medium) {
+    h1 { width: 55vw; }
   }
 
   a.button {

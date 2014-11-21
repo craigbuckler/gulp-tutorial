@@ -1,0 +1,33 @@
+// middle benefits section
+#benefits {
+	padding: 5vh 5vw;
+	background-color: $color-back;
+
+	ul {
+		@include reset-list;
+		text-align: center;
+
+		li {
+			display: inline-block;
+			width: 25%;
+			min-width: 15em;
+			max-width: 25em;
+			vertical-align: top;
+			text-align: center;
+			padding: 128px 2em 2em 2em;
+			margin: 0;
+			background-position: 50% 0;
+			background-repeat: no-repeat;
+		}
+
+		h2 {
+			margin: 0 0 0.5em 0;
+		}
+
+		p {
+			margin: 0;
+		}
+
+	}
+
+}

@@ -5,12 +5,15 @@
 // base
 @import 'base/_normalize';
 @import 'base/_base';
-@import 'base/_forms.scss';
+@import 'base/_webfonts';
+@import 'base/_forms';
 
 // inline image placeholders
-@import 'images/_datauri.scss';
+@import 'images/_datauri';
 
 // components
-@import 'components/_header.scss';
-@import 'components/_welcome.scss';
-@import 'components/_features.scss';
+@import 'components/_header';
+@import 'components/_welcome';
+@import 'components/_benefits';
+@import 'components/_features';
+@import 'components/_footer';

@@ -1,6 +1,75 @@
 header {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  right: 0;
+
+  nav {
+    font-size: 1.25em;
+
+    #menu {
+      position: absolute;
+      margin-left: -9999px;
+    }
+
+    label {
+      display: block;
+      float: right;
+      width: 6em;
+      padding: 0.5em 0 0.5em 0.3em;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    ul {
+      clear: right;
+      float: right;
+      width: 6em;
+      max-height: 0;
+      @include reset-list;
+      border-radius: 0 0 0 0.5em;
+      overflow: hidden;
+    }
+
+    label, ul {
+      color: rgba(255,255,255,0.6);
+      background-color: rgba(0,0,0,0.4);
+      user-select: none;
+      transition: all 0.25s ease;
+    }
+
+    #menu:checked {
+      & ~ label {
+        width: 100%;
+        color: rgba(255,255,255,0.8);
+        background-color: rgba(0,0,0,0.9);
+      }
+
+      & ~ ul {
+        width: 100%;
+        max-height: 8em;
+        color: rgba(255,255,255,1);
+        background-color: rgba(0,0,0,0.9);
+      }
+    }
+
+    li {
+      @include reset;
+    }
+
+    a {
+
+      &:link, &:visited {
+        display: block;
+        white-space: nowrap;
+        padding: 0.3em;
+        color: $color-back;
+      }
+
+      &:hover, &:focus, &:active {
+        text-decoration: none;
+        color: $color-light;
+      }
+    }
+
+  }
 }
