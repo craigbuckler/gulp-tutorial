@@ -23,7 +23,7 @@ var
 
 // file locations
 var
-  buildType = (process.env.NODE_ENV || 'development').toLowerCase(),
+  devBuild = ((process.env.NODE_ENV || 'development').trim().toLowerCase() == 'development'),
 
   // do not use absolute ./paths - watch fails to detect new and deleted files
   source = 'source/',
@@ -34,7 +34,7 @@ var
     watch: source + '**/*.html',
     out: dest,
     context: {
-      NODE_ENV: buildType,
+      devBuild: devBuild,
       author: pkg.author,
       version: pkg.version
     }
@@ -67,7 +67,7 @@ var
       rem: ['16px'],
       pseudoElements: true,
       mqpacker: true,
-      minifier: (buildType != 'development')
+      minifier: !devBuild
     }
   },
 
@@ -99,7 +99,7 @@ var
 ;
 
 // show build type
-console.log('Build type: ' + buildType);
+console.log(pkg.name + ' ' + pkg.version + ', ' + (devBuild ? 'development' : 'production') + ' build');
 
 // clean the build folder
 gulp.task('clean', function() {
@@ -110,7 +110,7 @@ gulp.task('clean', function() {
 
 // build HTML files
 gulp.task('html', function() {
-  if (buildType == 'development') {
+  if (devBuild) {
     return gulp.src(html.in)
       .pipe(preprocess({ context: html.context }))
       .pipe(gulp.dest(html.out));
@@ -160,7 +160,7 @@ gulp.task('sass', ['imguri'], function() {
 
 // javascript
 gulp.task('js', function() {
-  if (buildType == 'development') {
+  if (devBuild) {
     return gulp.src(js.in)
       .pipe(newer(js.out))
       .pipe(jshint())

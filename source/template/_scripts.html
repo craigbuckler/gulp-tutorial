@@ -1,9 +1,9 @@
-<!-- @if NODE_ENV = 'development' -->
+<!-- @if devBuild -->
 <script src="js/fontloader.js"></script>
 <script src="js/scrollto.js"></script>
 <script src="js/tweetform.js"></script>
 <!-- @endif -->
 
-<!-- @if NODE_ENV = 'production' -->
+<!-- @if !devBuild -->
 <script src="js/main.js"></script>
 <!-- @endif -->
