@@ -3,9 +3,9 @@
 // include gulp and plugins
 var
   gulp = require('gulp'),
-  preprocess = require('gulp-preprocess'),
   newer = require('gulp-newer'),
   concat = require('gulp-concat'),
+  preprocess = require('gulp-preprocess'),
   htmlclean = require('gulp-htmlclean'),
   imagemin = require('gulp-imagemin'),
   imacss = require('gulp-imacss'),
@@ -18,12 +18,11 @@ var
   size = require('gulp-size'),
   del = require('del'),
   browsersync = require('browser-sync'),
-  reload = browsersync.reload,
   pkg = require('./package.json');
 
 // file locations
 var
-  devBuild = ((process.env.NODE_ENV || 'development').trim().toLowerCase() == 'development'),
+  devBuild = ((process.env.NODE_ENV || 'development').trim().toLowerCase() !== 'production'),
 
   // do not use absolute ./paths - watch fails to detect new and deleted files
   source = 'source/',
@@ -31,7 +30,7 @@ var
 
   html = {
     in: source + '*.html',
-    watch: source + '**/*.html',
+    watch: [source + '*.html', source + 'template/**/*'],
     out: dest,
     context: {
       devBuild: devBuild,
@@ -57,8 +56,8 @@ var
     watch: [source + 'scss/**/*', '!' + imguri.out + imguri.filename],
     out: dest + 'css/',
     sassOpts: {
-      imagePath: '../images',
       outputStyle: 'nested',
+      imagePath: '../images',
       precision: 3,
       errLogToConsole: true
     },
@@ -82,16 +81,10 @@ var
     filename: 'main.js'
   },
 
-  syncopts = {
+  syncOpts = {
     server: {
       baseDir: dest,
       index: 'index.html'
-    },
-    ghostMode: {
-      clicks: true,
-      location: true,
-      forms: true,
-      scroll: true
     },
     open: false,
     notify: true
@@ -110,19 +103,14 @@ gulp.task('clean', function() {
 
 // build HTML files
 gulp.task('html', function() {
-  if (devBuild) {
-    return gulp.src(html.in)
-      .pipe(preprocess({ context: html.context }))
-      .pipe(gulp.dest(html.out));
-  }
-  else {
-    return gulp.src(html.in)
-      .pipe(preprocess({ context: html.context }))
+  var page = gulp.src(html.in).pipe(preprocess({ context: html.context }));
+  if (!devBuild) {
+    page = page
       .pipe(size({ title:'HTML in' }))
       .pipe(htmlclean())
-      .pipe(size({ title:'HTML out' }))
-      .pipe(gulp.dest(html.out));
+      .pipe(size({ title:'HTML out' }));
   }
+  return page.pipe(gulp.dest(html.out));
 });
 
 // optimize images
@@ -152,10 +140,11 @@ gulp.task('fonts', function() {
 gulp.task('sass', ['imguri'], function() {
   return gulp.src(css.in)
     .pipe(sass(css.sassOpts))
+    .pipe(size({title:'CSS in '}))
     .pipe(pleeease(css.pleeeaseOpts))
-    .pipe(size({title:'CSS'}))
+    .pipe(size({title:'CSS out '}))
     .pipe(gulp.dest(css.out))
-    .pipe(reload({ stream: true }));
+    .pipe(browsersync.reload({ stream: true }));
 });
 
 // javascript
@@ -185,7 +174,7 @@ gulp.task('js', function() {
 
 // browser sync
 gulp.task('browsersync', function() {
-  browsersync(syncopts);
+  browsersync(syncOpts);
 });
 
 // default task
